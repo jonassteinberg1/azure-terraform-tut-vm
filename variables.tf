@@ -1,9 +1,9 @@
-variable "azurerm_name" {
+variable "azurerm_rg_name" {
   type    = string
   default = "terraformTesting"
 }
 
-variable "azurerm_location" {
+variable "azurerm_rg_location" {
   type    = string
   default = "eastus"
 }
