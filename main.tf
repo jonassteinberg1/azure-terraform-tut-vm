@@ -17,3 +17,10 @@ resource "azurerm_virtual_network" "vnet" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 }
+
+resource "azurerm_subnet" "sn" {
+  name                 = join(" ", [azure_resource_group.rg.name, "-internal"])
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.vent.name
+  address_prefixes     = var.azurerm_sn_address_prefixes
+}

@@ -14,6 +14,11 @@ variable "azurerm_as_name" {
 }
 
 variable "azurerm_vn_address_space" {
-  type    = list(any)
+  type    = list(string)
   default = ["10.0.0.0/16"]
+}
+
+variable "azurerm_sn_address_prefixes" {
+  type    = list(string)
+  default = ["10.0.2.0/24"]
 }
