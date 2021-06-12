@@ -1,4 +1,9 @@
-variable "azure_rm_location" {
-  type = string
+variable "azurerm_name" {
+  type    = string
+  default = "terraformTesting"
+}
+
+variable "azurerm_location" {
+  type    = string
   default = "eastus"
 }
