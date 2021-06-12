@@ -22,3 +22,8 @@ variable "azurerm_sn_address_prefixes" {
   type    = list(string)
   default = ["10.0.2.0/24"]
 }
+
+variable "azurerm_inet_address_allocation" {
+  type    = string
+  default = "Dynamic"
+}
