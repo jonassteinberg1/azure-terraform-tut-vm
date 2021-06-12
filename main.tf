@@ -35,3 +35,30 @@ resource "azurerm_network_interface" "inet" {
     private_ip_address_allocation = var.azurerm_inet_address_allocation
   }
 }
+
+resource "azurerm_linux_virtual_machine" "vm" {
+  name                = join(" ", [azure_resource_group.rg.name, "-vm-1"])
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  size                = "Standard_F2"
+  admin_username      = "root"
+  network_interface_ids = [
+    azurerm_network_interface.inet.id,
+  ]
+
+  admin_ssh_key {
+    username   = "root"
+    public_key = file("~/.ssh/id_rsa.pub")
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "credative"
+    offer     = "Debian"
+    version   = "latest"
+  }
+}
