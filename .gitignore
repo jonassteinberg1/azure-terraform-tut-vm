@@ -31,3 +31,6 @@ override.tf.json
 # azure secrets from initial setup
 # can be removed eventually
 service_principal.json
+
+# no planfiles
+*.out
