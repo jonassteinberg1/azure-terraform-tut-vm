@@ -1,5 +1,9 @@
+data "local_file" "state" {
+  filename = "${path.cwd}/${terraform.workspace}/terraform.tfstate"
+}
+
 resource "azurerm_storage_account" "sa" {
-  name                     = "examplestoracc"
+  name                     = var.azurerm_sa_name
   resource_group_name      = azurerm_resource_group.example.name
   location                 = azurerm_resource_group.example.location
   account_tier             = "Standard"
